@@ -1,0 +1,50 @@
+:root {
+  --primary-dark: #0f172a;
+  --accent: #4f46e5;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: #1f2933;
+}
+
+.hero {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(79, 70, 229, 0.75));
+}
+
+.hero .lead {
+  max-width: 540px;
+}
+
+.card {
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 20px 45px -25px rgba(15, 23, 42, 0.35);
+}
+
+.alert-info {
+  background-color: rgba(79, 70, 229, 0.1);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  color: #312e81;
+}
+
+.table caption {
+  caption-side: bottom;
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+footer a:hover,
+footer a:focus {
+  color: var(--accent);
+}
+
+@media (max-width: 576px) {
+  header .display-5 {
+    font-size: 2.25rem;
+  }
+
+  .hero {
+    text-align: center;
+  }
+}
