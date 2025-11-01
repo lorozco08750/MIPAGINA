@@ -53,12 +53,12 @@
   const heroVideoSource = document.querySelector('[data-js="hero-video"] source[data-src]');
   if (heroVideoSource) {
     const resolvedSrc = resolveAssetPath(heroVideoSource.getAttribute('data-src'));
-    heroVideoSource.setAttribute('src', resolvedSrc);
-    heroVideoSource.removeAttribute('data-src');
+    document.querySelectorAll('[data-js="hero-video"] source[data-src]').forEach(function (source) {
+      source.setAttribute('src', resolvedSrc);
+      source.removeAttribute('data-src');
+    });
     const heroVideoElement = heroVideoSource.closest('video');
-    if (heroVideoElement && typeof heroVideoElement.load === 'function') {
-      heroVideoElement.load();
-    }
+    heroVideoElement?.load?.();
   }
 
   const button = document.getElementById('simulador-servicio');
