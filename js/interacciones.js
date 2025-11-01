@@ -1,4 +1,25 @@
 (function () {
+  function resolveAssetPath(relativePath) {
+    if (!relativePath) {
+      return relativePath;
+    }
+
+    const trimmedPath = relativePath.replace(/^\/+/, "");
+
+    if (window.location.protocol === "file:") {
+      return trimmedPath;
+    }
+
+    if (window.location.hostname.endsWith(".github.io")) {
+      const segments = window.location.pathname.split("/").filter(Boolean);
+      if (segments.length > 0) {
+        return `/${segments[0]}/${trimmedPath}`;
+      }
+    }
+
+    return trimmedPath;
+  }
+
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
@@ -26,6 +47,17 @@
     const currentYear = new Date().getFullYear();
     if (yearElement.textContent !== String(currentYear)) {
       yearElement.textContent = currentYear;
+    }
+  }
+
+  const heroVideoSource = document.querySelector('[data-js="hero-video"] source[data-src]');
+  if (heroVideoSource) {
+    const resolvedSrc = resolveAssetPath(heroVideoSource.getAttribute('data-src'));
+    heroVideoSource.setAttribute('src', resolvedSrc);
+    heroVideoSource.removeAttribute('data-src');
+    const heroVideoElement = heroVideoSource.closest('video');
+    if (heroVideoElement && typeof heroVideoElement.load === 'function') {
+      heroVideoElement.load();
     }
   }
 
