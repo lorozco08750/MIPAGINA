@@ -11,7 +11,16 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <body class="loading">
+    <div id="sunset-loader" class="sunset-loader" role="status" aria-live="polite">
+      <div class="sunset-scene">
+        <div class="sunset-bar">
+          <div class="sunset-progress"></div>
+        </div>
+        <div class="sun"></div>
+      </div>
+      <span class="visually-hidden">Cargando creatividad, preparando el horizonte...</span>
+    </div>
     <header class="bg-dark text-white">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Menú principal">
         <div class="container">
@@ -55,14 +64,23 @@
                 Descubre cómo podemos ayudarte <a class="link-light text-decoration-underline" href="#contacto">a dar el siguiente paso</a>.
               </p>
               <a class="btn btn-primary btn-lg" href="#servicios">Conoce nuestros servicios</a>
+              <button class="btn btn-outline-light btn-lg mt-3" id="simulador-servicio" type="button">
+                Simula tu plan personalizado
+              </button>
             </div>
             <div class="col-lg-6 text-center mt-4 mt-lg-0">
               <figure>
-                <img
-                  src="imagen/20251005_1724_Agencia-Creativa-Horizonte_simple_compose_01k6v7j6g6e438tsee651gqsx7.png"
-                  alt="Equipo creativo trabajando en laptops"
+                <video
                   class="img-fluid rounded shadow"
+                  loop
+                  autoplay
+                  muted
+                  playsinline
+                  aria-label="Equipo creativo trabajando en laptops"
                 >
+                  <source src="video/20251005_1728_New Video_simple_compose_01k6v7vtesfvjv6wwmf947kbh5.mp4" type="video/mp4">
+                  Tu navegador no soporta la reproducción de video.
+                </video>
                 <figcaption class="mt-2 text-white-50">Impulsamos experiencias memorables en cada interacción.</figcaption>
               </figure>
             </div>
@@ -319,12 +337,6 @@
     </footer>
 
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script>
-      const yearElement = document.getElementById('anio-actual');
-      const currentYear = new Date().getFullYear();
-      if (yearElement) {
-        yearElement.textContent = currentYear;
-      }
-    </script>
+    <script src="js/interacciones.js"></script>
   </body>
 </html>
